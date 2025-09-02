@@ -1,53 +1,99 @@
-# Open WebUI 👋
+# Open WebUI - Next.js Frontend 👋
 
 ![GitHub stars](https://img.shields.io/github/stars/open-webui/open-webui?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/open-webui/open-webui?style=social)
 ![GitHub watchers](https://img.shields.io/github/watchers/open-webui/open-webui?style=social)
-![GitHub repo size](https://img.shields.io/github/repo-size/open-webui/open-webui)
-![GitHub language count](https://img.shields.io/github/languages/count/open-webui/open-webui)
-![GitHub top language](https://img.shields.io/github/languages/top/open-webui/open-webui)
-![GitHub last commit](https://img.shields.io/github/last-commit/open-webui/open-webui?color=red)
-[![Discord](https://img.shields.io/badge/Discord-Open_WebUI-blue?logo=discord&logoColor=white)](https://discord.gg/5rJgQTnV4s)
-[![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/tjbck)
 
-**Open WebUI is an [extensible](https://docs.openwebui.com/features/plugin/), feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline.** It supports various LLM runners like **Ollama** and **OpenAI-compatible APIs**, with **built-in inference engine** for RAG, making it a **powerful AI deployment solution**.
+**Open WebUI has been transformed into a Next.js frontend application - no Docker required!**
 
-Passionate about open-source AI? [Join our team →](https://careers.openwebui.com/)
+This is a modernized version of Open WebUI built with Next.js, React, and TypeScript, designed to run as a standalone frontend application without Docker dependencies.
 
-![Open WebUI Demo](./demo.gif)
+## 🚀 Quick Start
 
-> [!TIP]  
-> **Looking for an [Enterprise Plan](https://docs.openwebui.com/enterprise)?** – **[Speak with Our Sales Team Today!](mailto:sales@openwebui.com)**
->
-> Get **enhanced capabilities**, including **custom theming and branding**, **Service Level Agreement (SLA) support**, **Long-Term Support (LTS) versions**, and **more!**
+### Prerequisites
 
-For more information, be sure to check out our [Open WebUI Documentation](https://docs.openwebui.com/).
+- Node.js 18.13.0 or higher
+- npm 6.0.0 or higher
 
-## Key Features of Open WebUI ⭐
+### Installation
 
-- 🚀 **Effortless Setup**: Install seamlessly using Docker or Kubernetes (kubectl, kustomize or helm) for a hassle-free experience with support for both `:ollama` and `:cuda` tagged images.
+1. Clone the repository:
+```bash
+git clone https://github.com/openapiv1/open-webui.git
+cd open-webui
+```
 
-- 🤝 **Ollama/OpenAI API Integration**: Effortlessly integrate OpenAI-compatible APIs for versatile conversations alongside Ollama models. Customize the OpenAI API URL to link with **LMStudio, GroqCloud, Mistral, OpenRouter, and more**.
+2. Install dependencies:
+```bash
+npm install
+```
 
-- 🛡️ **Granular Permissions and User Groups**: By allowing administrators to create detailed user roles and permissions, we ensure a secure user environment. This granularity not only enhances security but also allows for customized user experiences, fostering a sense of ownership and responsibility amongst users.
+3. Start the development server:
+```bash
+npm run dev
+```
 
-- 🔄 **SCIM 2.0 Support**: Enterprise-grade user and group provisioning through SCIM 2.0 protocol, enabling seamless integration with identity providers like Okta, Azure AD, and Google Workspace for automated user lifecycle management.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-- 📱 **Responsive Design**: Enjoy a seamless experience across Desktop PC, Laptop, and Mobile devices.
+### Building for Production
 
-- 📱 **Progressive Web App (PWA) for Mobile**: Enjoy a native app-like experience on your mobile device with our PWA, providing offline access on localhost and a seamless user interface.
+```bash
+# Build the application
+npm run build
 
-- ✒️🔢 **Full Markdown and LaTeX Support**: Elevate your LLM experience with comprehensive Markdown and LaTeX capabilities for enriched interaction.
+# The build output will be in the `out/` directory
+# You can serve this static content with any web server
+```
 
-- 🎤📹 **Hands-Free Voice/Video Call**: Experience seamless communication with integrated hands-free voice and video call features, allowing for a more dynamic and interactive chat environment.
+## 📁 Project Structure
 
-- 🛠️ **Model Builder**: Easily create Ollama models via the Web UI. Create and add custom characters/agents, customize chat elements, and import models effortlessly through [Open WebUI Community](https://openwebui.com/) integration.
+```
+src/
+├── app/                 # Next.js App Router pages
+│   ├── globals.css      # Global styles
+│   ├── layout.tsx       # Root layout
+│   └── page.tsx         # Home page
+├── components/          # Reusable React components
+├── hooks/              # Custom React hooks
+└── lib/                # Utility functions and configurations
+```
 
-- 🐍 **Native Python Function Calling Tool**: Enhance your LLMs with built-in code editor support in the tools workspace. Bring Your Own Function (BYOF) by simply adding your pure Python functions, enabling seamless integration with LLMs.
+## 🛠️ Available Scripts
 
-- 📚 **Local RAG Integration**: Dive into the future of chat interactions with groundbreaking Retrieval Augmented Generation (RAG) support. This feature seamlessly integrates document interactions into your chat experience. You can load documents directly into the chat or add files to your document library, effortlessly accessing them using the `#` command before a query.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run type-check` - Run TypeScript type checking
 
-- 🔍 **Web Search for RAG**: Perform web searches using providers like `SearXNG`, `Google PSE`, `Brave Search`, `serpstack`, `serper`, `Serply`, `DuckDuckGo`, `TavilySearch`, `SearchApi` and `Bing` and inject the results directly into your chat experience.
+## ✨ Key Changes
+
+- ✅ **No Docker Required**: Runs directly with Node.js and npm
+- ✅ **Next.js Framework**: Modern React-based framework with App Router
+- ✅ **TypeScript Support**: Full TypeScript integration
+- ✅ **Tailwind CSS**: Utility-first CSS framework
+- ✅ **Static Export**: Builds to static files for easy deployment
+- ✅ **Modern Development**: ESLint, Prettier, and development tools
+
+## 🚀 Deployment
+
+The application builds to static files and can be deployed to:
+
+- **Static Hosting**: Vercel, Netlify, GitHub Pages
+- **CDN**: AWS CloudFront, Cloudflare Pages  
+- **Web Servers**: Apache, Nginx, or any static file server
+
+## 🔧 Technology Stack
+
+- **Framework**: Next.js 14
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Bundler**: Webpack (via Next.js)
+- **Package Manager**: npm
+
+---
+
+*This version focuses on providing a clean, modern frontend experience without the complexity of Docker containers and backend dependencies.*
 
 - 🌐 **Web Browsing Capability**: Seamlessly integrate websites into your chat experience using the `#` command followed by a URL. This feature allows you to incorporate web content directly into your conversations, enhancing the richness and depth of your interactions.
 
