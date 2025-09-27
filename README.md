@@ -25,7 +25,7 @@ For more information, be sure to check out our [Open WebUI Documentation](https:
 
 ## Key Features of Open WebUI ⭐
 
-- 🚀 **Effortless Setup**: Install seamlessly using Docker or Kubernetes (kubectl, kustomize or helm) for a hassle-free experience with support for both `:ollama` and `:cuda` tagged images.
+- 🚀 **Simple Frontend Setup**: Easy development setup using Node.js and npm for a hassle-free experience with modern web technologies.
 
 - 🤝 **Ollama/OpenAI API Integration**: Effortlessly integrate OpenAI-compatible APIs for versatile conversations alongside Ollama models. Customize the OpenAI API URL to link with **LMStudio, GroqCloud, Mistral, OpenRouter, and more**.
 
@@ -108,44 +108,87 @@ We are incredibly grateful for the generous support of our sponsors. Their contr
 
 ## How to Install 🚀
 
-### Installation via Python pip 🐍
+### Frontend Development Setup 🎨
 
-Open WebUI can be installed using pip, the Python package installer. Before proceeding, ensure you're using **Python 3.11** to avoid compatibility issues.
+Open WebUI is now available as a frontend-only application. You can set up a development environment using Node.js and npm.
 
-1. **Install Open WebUI**:
-   Open your terminal and run the following command to install Open WebUI:
+#### Prerequisites
 
+- **Node.js** (version 18.13.0 - 22.x.x)
+- **npm** (version 6.0.0 or higher)
+
+#### Installation Steps
+
+1. **Clone the repository**:
    ```bash
-   pip install open-webui
+   git clone https://github.com/openapiv1/open-webui.git
+   cd open-webui
    ```
 
-2. **Running Open WebUI**:
-   After installation, you can start Open WebUI by executing:
-
+2. **Install dependencies**:
    ```bash
-   open-webui serve
+   npm install
    ```
 
-This will start the Open WebUI server, which you can access at [http://localhost:8080](http://localhost:8080)
+3. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
 
-### Quick Start with Docker 🐳
+   The application will be available at [http://localhost:5173](http://localhost:5173)
 
-> [!NOTE]  
-> Please note that for certain Docker environments, additional configurations might be needed. If you encounter any connection issues, our detailed guide on [Open WebUI Documentation](https://docs.openwebui.com/) is ready to assist you.
+4. **Build for production**:
+   ```bash
+   npm run build
+   ```
 
-> [!WARNING]
-> When using Docker to install Open WebUI, make sure to include the `-v open-webui:/app/backend/data` in your Docker command. This step is crucial as it ensures your database is properly mounted and prevents any loss of data.
+5. **Preview production build**:
+   ```bash
+   npm run preview
+   ```
 
-> [!TIP]  
-> If you wish to utilize Open WebUI with Ollama included or CUDA acceleration, we recommend utilizing our official images tagged with either `:cuda` or `:ollama`. To enable CUDA, you must install the [Nvidia CUDA container toolkit](https://docs.nvidia.com/dgx/nvidia-container-runtime-upgrade/) on your Linux/WSL system.
+#### Available Scripts
 
-### Installation with Default Configuration
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Lint the codebase
+- `npm run format` - Format code
+- `npm test` - Run tests
 
-- **If Ollama is on your computer**, use this command:
+#### Alternative using Makefile
 
-  ```bash
-  docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
-  ```
+You can also use the provided Makefile for common tasks:
+
+```bash
+make install    # Install dependencies
+make dev        # Start development server  
+make build      # Build for production
+make preview    # Preview production build
+make lint       # Lint code
+make clean      # Clean build artifacts
+```
+
+### Development Guide
+
+For detailed development instructions, visit our [Development Documentation](https://docs.openwebui.com/getting-started/advanced-topics/development) or join our [Discord community](https://discord.gg/5rJgQTnV4s).
+
+### Troubleshooting
+
+If you encounter any issues during development:
+
+1. **Clear node_modules and reinstall**:
+   ```bash
+   make clean
+   make install
+   ```
+
+2. **Check Node.js version**: Ensure you're using a supported Node.js version (18.13.0 - 22.x.x)
+
+3. **Network connectivity**: Some dependencies may require internet access during installation
+
+For further assistance, visit the [Open WebUI Discord](https://discord.gg/5rJgQTnV4s) or check our [Documentation](https://docs.openwebui.com/).
+
 
 - **If Ollama is on a Different Server**, use this command:
 
