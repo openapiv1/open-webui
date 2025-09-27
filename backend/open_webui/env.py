@@ -36,10 +36,8 @@ try:
 except ImportError:
     print("dotenv not installed, skipping...")
 
-DOCKER = os.environ.get("DOCKER", "False").lower() == "true"
-
 # device type embedding models - "cpu" (default), "cuda" (nvidia gpu required) or "mps" (apple silicon) - choosing this right can lead to better performance
-USE_CUDA = os.environ.get("USE_CUDA_DOCKER", "false")
+USE_CUDA = os.environ.get("USE_CUDA", "false")
 
 if USE_CUDA.lower() == "true":
     try:
@@ -49,10 +47,10 @@ if USE_CUDA.lower() == "true":
         DEVICE_TYPE = "cuda"
     except Exception as e:
         cuda_error = (
-            "Error when testing CUDA but USE_CUDA_DOCKER is true. "
-            f"Resetting USE_CUDA_DOCKER to false: {e}"
+            "Error when testing CUDA but USE_CUDA is true. "
+            f"Resetting USE_CUDA to false: {e}"
         )
-        os.environ["USE_CUDA_DOCKER"] = "false"
+        os.environ["USE_CUDA"] = "false"
         USE_CUDA = "false"
         DEVICE_TYPE = "cpu"
 else:

@@ -897,7 +897,6 @@ if OLLAMA_BASE_URL:
 
 
 K8S_FLAG = os.environ.get("K8S_FLAG", "")
-USE_OLLAMA_DOCKER = os.environ.get("USE_OLLAMA_DOCKER", "false")
 
 if OLLAMA_BASE_URL == "" and OLLAMA_API_BASE_URL != "":
     OLLAMA_BASE_URL = (
@@ -908,12 +907,8 @@ if OLLAMA_BASE_URL == "" and OLLAMA_API_BASE_URL != "":
 
 if ENV == "prod":
     if OLLAMA_BASE_URL == "/ollama" and not K8S_FLAG:
-        if USE_OLLAMA_DOCKER.lower() == "true":
-            # if you use all-in-one docker container (Open WebUI + Ollama)
-            # with the docker build arg USE_OLLAMA=true (--build-arg="USE_OLLAMA=true") this only works with http://localhost:11434
-            OLLAMA_BASE_URL = "http://localhost:11434"
-        else:
-            OLLAMA_BASE_URL = "http://host.docker.internal:11434"
+        # Default to localhost for non-Kubernetes environments
+        OLLAMA_BASE_URL = "http://localhost:11434"
     elif K8S_FLAG:
         OLLAMA_BASE_URL = "http://ollama-service.open-webui.svc.cluster.local:11434"
 
@@ -1941,7 +1936,7 @@ if VECTOR_DB == "chroma":
     else:
         CHROMA_HTTP_HEADERS = None
     CHROMA_HTTP_SSL = os.environ.get("CHROMA_HTTP_SSL", "false").lower() == "true"
-# this uses the model defined in the Dockerfile ENV variable. If you dont use docker or docker based deployments such as k8s, the default embedding model will be used (sentence-transformers/all-MiniLM-L6-v2)
+# Default embedding model (sentence-transformers/all-MiniLM-L6-v2)
 
 # Milvus
 

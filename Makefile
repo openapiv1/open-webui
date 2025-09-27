@@ -1,33 +1,32 @@
 
-ifneq ($(shell which docker-compose 2>/dev/null),)
-    DOCKER_COMPOSE := docker-compose
-else
-    DOCKER_COMPOSE := docker compose
-endif
+# Open WebUI - Frontend Development Makefile
 
 install:
-	$(DOCKER_COMPOSE) up -d
+	npm install
 
-remove:
-	@chmod +x confirm_remove.sh
-	@./confirm_remove.sh
+dev:
+	npm run dev
 
-start:
-	$(DOCKER_COMPOSE) start
-startAndBuild: 
-	$(DOCKER_COMPOSE) up -d --build
+build:
+	npm run build
 
-stop:
-	$(DOCKER_COMPOSE) stop
+preview:
+	npm run preview
+
+lint:
+	npm run lint
+
+format:
+	npm run format
+
+clean:
+	rm -rf node_modules build .svelte-kit
+
+test:
+	npm run test:frontend
 
 update:
-	# Calls the LLM update script
-	chmod +x update_ollama_models.sh
-	@./update_ollama_models.sh
 	@git pull
-	$(DOCKER_COMPOSE) down
-	# Make sure the ollama-webui container is stopped before rebuilding
-	@docker stop open-webui || true
-	$(DOCKER_COMPOSE) up --build -d
-	$(DOCKER_COMPOSE) start
+	npm install
+	npm run build
 
