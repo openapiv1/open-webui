@@ -152,9 +152,7 @@ all = [
     "pgvector==0.4.0",
     "moto[s3]>=5.0.26",
     "gcp-storage-emulator>=2024.8.3",
-    "docker~=7.1.0",
     "pytest~=8.3.2",
-    "pytest-docker~=3.1.1",
 ]
 
 [project.scripts]
@@ -180,7 +178,6 @@ pattern = '"version":\s*"(?P<version>[^"]+)"'
 [tool.hatch.build.targets.wheel]
 sources = ["backend"]
 exclude = [
-    ".dockerignore",
     ".gitignore",
     ".webui_secret_key",
     "dev.sh",
