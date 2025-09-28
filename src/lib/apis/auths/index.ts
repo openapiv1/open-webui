@@ -83,31 +83,19 @@ export const updateAdminConfig = async (token: string, body: object) => {
 };
 
 export const getSessionUser = async (token: string) => {
-	let error = null;
-
-	const res = await fetch(`${WEBUI_API_BASE_URL}/auths/`, {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${token}`
-		},
-		credentials: 'include'
-	})
-		.then(async (res) => {
-			if (!res.ok) throw await res.json();
-			return res.json();
-		})
-		.catch((err) => {
-			console.error(err);
-			error = err.detail;
-			return null;
-		});
-
-	if (error) {
-		throw error;
-	}
-
-	return res;
+	// Mock user dla trybu demonstracyjnego
+	return {
+		id: 'demo-user-123',
+		email: 'demo@example.com',
+		name: 'Demo User',
+		role: 'user',
+		profile_image_url: '',
+		api_key: null,
+		settings: {},
+		ui: {},
+		created_at: Date.now(),
+		updated_at: Date.now()
+	};
 };
 
 export const ldapUserSignIn = async (user: string, password: string) => {

@@ -1317,30 +1317,31 @@ export const getUsage = async (token: string = '') => {
 };
 
 export const getBackendConfig = async () => {
-	let error = null;
-
-	const res = await fetch(`${WEBUI_BASE_URL}/api/config`, {
-		method: 'GET',
-		credentials: 'include',
-		headers: {
-			'Content-Type': 'application/json'
+	// Mock config dla trybu demonstracyjnego bez backendu
+	return {
+		name: 'Open WebUI',
+		version: '0.6.26',
+		default_locale: 'en-US',
+		features: {
+			enable_websocket: false,
+			enable_signup: false,
+			enable_community_sharing: false,
+			enable_admin_export: false,
+			enable_message_rating: true,
+			enable_evaluation_arena_models: false,
+			enable_web_search: false,
+			enable_image_generation: false,
+			enable_image_description: false
+		},
+		oauth: {},
+		auth: {
+			trusted_header_auth: false
+		},
+		ui: {
+			default_models: [],
+			prompt_suggestions: []
 		}
-	})
-		.then(async (res) => {
-			if (!res.ok) throw await res.json();
-			return res.json();
-		})
-		.catch((err) => {
-			console.error(err);
-			error = err;
-			return null;
-		});
-
-	if (error) {
-		throw error;
-	}
-
-	return res;
+	};
 };
 
 export const getChangelog = async () => {
