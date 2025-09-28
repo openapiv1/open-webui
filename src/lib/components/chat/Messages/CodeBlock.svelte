@@ -207,8 +207,7 @@
 
 			executing = false;
 		} else {
-			// W trybie demonstracyjnym - nie można uruchamiać kodu
-			stderr = 'Code execution not available in demo mode';
+			// Kod Python nie może być wykonany bez backendu
 			executing = false;
 		}
 	};

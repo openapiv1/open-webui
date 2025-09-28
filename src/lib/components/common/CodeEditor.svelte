@@ -107,15 +107,11 @@
 		return await language?.load();
 	};
 
-	// Generate unique IDs for requests
+	// Generate unique IDs for requests  
 	let _formatReqId = 0;
 
 	export const formatPythonCodeHandler = async () => {
-		if (codeEditor) {
-			// W trybie demonstracyjnym - bez formatowania kodu
-			toast.error('Code formatting not available in demo mode');
-			return false;
-		}
+		// Funkcjonalność formatowania została wyłączona
 		return false;
 	};
 
