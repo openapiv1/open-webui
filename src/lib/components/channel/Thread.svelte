@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 
-	import { socket, user } from '$lib/stores';
+	import { user } from '$lib/stores';
 
 	import { getChannelThreadMessages, sendMessage } from '$lib/apis/channels';
 
@@ -136,24 +136,15 @@
 	};
 
 	const onChange = async () => {
-		$socket?.emit('channel-events', {
-			channel_id: channel.id,
-			message_id: threadId,
-			data: {
-				type: 'typing',
-				data: {
-					typing: true
-				}
-			}
-		});
+		// Socket nie jest dostępny w trybie demonstracyjnym
 	};
 
 	onMount(() => {
-		$socket?.on('channel-events', channelEventHandler);
+		// Socket nie jest dostępny w trybie demonstracyjnym
 	});
 
 	onDestroy(() => {
-		$socket?.off('channel-events', channelEventHandler);
+		// Socket nie jest dostępny w trybie demonstracyjnym
 	});
 </script>
 

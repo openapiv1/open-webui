@@ -126,7 +126,6 @@
 			}
 		}
 	};
-	};
 
 	const channelEventHandler = async (event) => {
 		if (event.data?.type === 'typing') {

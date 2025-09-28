@@ -5,7 +5,7 @@
 	import { onDestroy, onMount, tick } from 'svelte';
 	import { goto } from '$app/navigation';
 
-	import { chatId, showSidebar, socket, user } from '$lib/stores';
+	import { chatId, showSidebar, user } from '$lib/stores';
 	import { getChannelById, getChannelMessages, sendMessage } from '$lib/apis/channels';
 
 	import Messages from './Messages.svelte';
@@ -173,7 +173,7 @@
 			chatId.set('');
 		}
 
-		$socket?.on('channel-events', channelEventHandler);
+		
 
 		mediaQuery = window.matchMedia('(min-width: 1024px)');
 
@@ -190,7 +190,7 @@
 	});
 
 	onDestroy(() => {
-		$socket?.off('channel-events', channelEventHandler);
+		
 	});
 </script>
 
