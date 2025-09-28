@@ -20,7 +20,6 @@
 		currentChatPage,
 		temporaryChatEnabled,
 		channels,
-		socket,
 		config,
 		isApp,
 		models,
@@ -465,7 +464,7 @@
 		});
 
 		if (res) {
-			$socket.emit('join-channels', { auth: { token: $user?.token } });
+			// Socket nie jest dostępny w trybie demonstracyjnym
 			await initChannels();
 			showCreateChannel = false;
 		}

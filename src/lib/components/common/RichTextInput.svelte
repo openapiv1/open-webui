@@ -257,7 +257,7 @@
 
 	// Custom Yjs Socket.IO provider
 	class SocketIOProvider {
-		constructor(doc, documentId, socket, user) {
+		constructor(doc, documentId, user) {
 			this.doc = doc;
 			this.documentId = documentId;
 			this.socket = socket;
@@ -553,7 +553,7 @@
 		awareness = new SimpleAwareness(ydoc);
 
 		// Create custom Socket.IO provider
-		provider = new SocketIOProvider(ydoc, documentId, socket, user);
+		provider = new SocketIOProvider(ydoc, documentId, user);
 	}
 
 	let floatingMenuElement = null;

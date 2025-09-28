@@ -78,42 +78,8 @@ export const importChat = async (
 };
 
 export const getChatList = async (token: string = '', page: number | null = null) => {
-	let error = null;
-	const searchParams = new URLSearchParams();
-
-	if (page !== null) {
-		searchParams.append('page', `${page}`);
-	}
-
-	const res = await fetch(`${WEBUI_API_BASE_URL}/chats/?${searchParams.toString()}`, {
-		method: 'GET',
-		headers: {
-			Accept: 'application/json',
-			'Content-Type': 'application/json',
-			...(token && { authorization: `Bearer ${token}` })
-		}
-	})
-		.then(async (res) => {
-			if (!res.ok) throw await res.json();
-			return res.json();
-		})
-		.then((json) => {
-			return json;
-		})
-		.catch((err) => {
-			error = err;
-			console.error(err);
-			return null;
-		});
-
-	if (error) {
-		throw error;
-	}
-
-	return res.map((chat) => ({
-		...chat,
-		time_range: getTimeRange(chat.updated_at)
-	}));
+	// Mock chats dla trybu demonstracyjnego
+	return [];
 };
 
 export const getChatListByUserId = async (
@@ -382,34 +348,8 @@ export const getAllUserChats = async (token: string) => {
 };
 
 export const getAllTags = async (token: string) => {
-	let error = null;
-
-	const res = await fetch(`${WEBUI_API_BASE_URL}/chats/all/tags`, {
-		method: 'GET',
-		headers: {
-			Accept: 'application/json',
-			'Content-Type': 'application/json',
-			...(token && { authorization: `Bearer ${token}` })
-		}
-	})
-		.then(async (res) => {
-			if (!res.ok) throw await res.json();
-			return res.json();
-		})
-		.then((json) => {
-			return json;
-		})
-		.catch((err) => {
-			error = err;
-			console.error(err);
-			return null;
-		});
-
-	if (error) {
-		throw error;
-	}
-
-	return res;
+	// Mock tags dla trybu demonstracyjnego
+	return [];
 };
 
 export const getPinnedChatList = async (token: string = '') => {

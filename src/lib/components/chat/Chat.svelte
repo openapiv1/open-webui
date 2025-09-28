@@ -26,7 +26,6 @@
 		WEBUI_NAME,
 		banners,
 		user,
-		socket,
 		showControls,
 		showCallOverlay,
 		currentChatPage,
@@ -463,7 +462,7 @@
 		loading = true;
 		console.log('mounted');
 		window.addEventListener('message', onMessageHandler);
-		$socket?.on('chat-events', chatEventHandler);
+		
 
 		pageSubscribe = page.subscribe(async (p) => {
 			if (p.url.pathname === '/') {
@@ -537,7 +536,7 @@
 		pageSubscribe();
 		chatIdUnsubscriber?.();
 		window.removeEventListener('message', onMessageHandler);
-		$socket?.off('chat-events', chatEventHandler);
+		
 	});
 
 	// File upload functions
