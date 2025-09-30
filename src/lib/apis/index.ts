@@ -39,7 +39,8 @@ export const getModels = async (
 		});
 
 	if (error) {
-		throw error;
+		// Return empty models list for demo mode (no backend)
+		return [];
 	}
 
 	let models = res?.data ?? [];
@@ -1337,7 +1338,58 @@ export const getBackendConfig = async () => {
 		});
 
 	if (error) {
-		throw error;
+		// Return default configuration for demo mode (no backend)
+		return {
+			default_locale: 'en-US',
+			name: 'Open WebUI',
+			version: '0.6.26',
+			demo_mode: true,
+			enable_signup: false,
+			enable_login_form: false,
+			enable_ldap: false,
+			enable_oauth: false,
+			enable_community_sharing: false,
+			enable_message_rating: true,
+			enable_web_browsing: false,
+			enable_image_generation: false,
+			enable_admin_export: false,
+			default_models: [],
+			default_prompt_suggestions: [
+				{
+					title: ["Help me study", "vocabulary for a college entrance exam"],
+					content: "Help me study vocabulary: write a sentence for me to fill in the blank, and I'll try to pick the correct option."
+				},
+				{
+					title: ["Give me ideas", "for what to do with my kids' art"],
+					content: "What are some creative things I can do with my kids' art? I have a lot of drawings."
+				},
+				{
+					title: ["Tell me a fun fact", "about the Roman Empire"],
+					content: "Tell me a random fun fact about the Roman Empire"
+				},
+				{
+					title: ["Show me a code snippet", "of a website's sticky header"],
+					content: "Show me a code snippet of a website's sticky header in CSS and JavaScript."
+				}
+			],
+			audio: {
+				tts: {
+					engine: '',
+					model: ''
+				}
+			},
+			features: {
+				enable_ldap: false,
+				enable_oauth: false,
+				enable_login_form: false,
+				enable_signup: false,
+				enable_community_sharing: false,
+				enable_message_rating: true,
+				enable_web_browsing: false,
+				enable_image_generation: false,
+				enable_admin_export: false
+			}
+		};
 	}
 
 	return res;

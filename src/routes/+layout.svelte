@@ -596,7 +596,7 @@
 			const browserLanguages = navigator.languages
 				? navigator.languages
 				: [navigator.language || navigator.userLanguage];
-			const lang = backendConfig.default_locale
+			const lang = (backendConfig && backendConfig.default_locale)
 				? backendConfig.default_locale
 				: bestMatchingLanguage(languages, browserLanguages, 'en-US');
 			changeLanguage(lang);
